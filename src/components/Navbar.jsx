@@ -37,7 +37,7 @@ const Navbar = () => {
         <ul className="md:hidden mt-3 bg-white shadow rounded-lg px-4 py-2 space-y-2 text-gray-800">
           <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
           <li><Link to="/about" onClick={toggleMenu}>About Us</Link></li>
-          <li><Link to="/find" onClick={toggleMenu}>Find Blood</Link></li>
+          <li><Link to="/findblood" onClick={toggleMenu}>Find Blood</Link></li>
           <li><Link to="/register" onClick={toggleMenu}>Register Now</Link></li>
           <li>
             <Link to="/login" onClick={toggleMenu} className="block border px-4 py-1 rounded hover:bg-red-700 hover:text-white">
