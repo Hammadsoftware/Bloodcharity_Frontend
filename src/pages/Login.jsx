@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Main App component
 function Login() {
@@ -60,13 +61,18 @@ function Login() {
 
             {/* Submit Button */}
             <div className="flex items-center justify-end">
-              <button
-                type="submit"
-                className="bg-white border border-gray-400 text-gray-800 font-bold py-2 px-5 rounded-lg focus:outline-none focus:shadow-outline transition duration-200 ease-in-out hover:bg-gray-100"
-              >
-                Login
-                <svg className="inline-block ml-2 w-4 h-4 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-              </button>
+              <Link
+                to={"/profile"}>
+                <button
+                  type="submit"
+                  className="bg-white border border-gray-400 text-gray-800 font-bold py-2 px-5 rounded-lg focus:outline-none focus:shadow-outline transition duration-200 ease-in-out hover:bg-gray-100"
+                >
+                  Login
+                  <svg className="inline-block ml-2 w-4 h-4 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                </button>
+
+              </Link>
+
             </div>
 
             {/* Optional: Forgot Password/Sign Up Links */}
