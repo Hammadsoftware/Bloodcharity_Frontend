@@ -1,17 +1,17 @@
 import React from 'react';
 
 // A separate component that displays the numbered circle and content.
-const StepCircle = ({ num, text }) => (
-  <div className="flex flex-col items-center relative py-8 sm:py-10 md:py-12"> {/* Added py-12 for vertical spacing */}
+const StepCircle = ({ num, text, iconPath }) => (
+  <div className="flex flex-col items-center relative py-10 px-2 sm:px-4 md:px-6"> {/* Adjusted padding for spacing */}
     {/* Outer numbered circle */}
-    <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full border-2 border-gray-400 flex items-center justify-center absolute z-20 -top-8 sm:-top-10 left-1/2 -translate-x-1/2 bg-gray-100"> {/* Adjusted top, added bg-gray-100 to cover the line */}
-      <span className="text-2xl sm:text-3xl md:text-3xl font-bold text-gray-600">{num}</span> {/* Made font size responsive */}
+    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-gray-400 flex items-center justify-center absolute z-20 -top-8 sm:-top-10 left-1/2 -translate-x-1/2 bg-gray-100 shadow-md"> {/* Adjusted top and added shadow */}
+      <span className="text-2xl sm:text-3xl font-bold text-gray-600">{num}</span>
     </div>
     {/* Inner content circle */}
-    <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full bg-white shadow-lg flex flex-col items-center justify-center p-3 sm:p-4 text-center z-10"> {/* Removed mt */}
-      {/* Icon (pen icon as per image) */}
+    <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-white shadow-lg flex flex-col items-center justify-center p-3 sm:p-4 text-center z-10 mt-10"> {/* Adjusted size and added margin-top to push down */}
+      {/* Icon (document-text icon) */}
       <svg
-        className="w-8 h-8 sm:w-10 sm:h-10 text-gray-700 mb-1 sm:mb-2" // Made icon size responsive
+        className="w-9 h-9 sm:w-11 sm:h-1 mb-1 sm:mb-2" // Icon color changed to red for consistency
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -20,11 +20,14 @@ const StepCircle = ({ num, text }) => (
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="2"
-          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 0 002-2v-5m-7-7l4-4m-4 4l-7 7m7-7v7m0-7H7"
+          strokeWidth="1.5" // Slightly thinner stroke for elegance
+          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
         ></path>
+        {/* If you want a pen explicitly with paper, you might use a path like this, or combine two paths */}
+        {/* Example for pen on paper (might need adjustment based on desired look): */}
+        {/* <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-7-7l4-4m-4 4l-7 7m7-7v7m0-7H7"></path> */}
       </svg>
-      <p className="text-xs sm:text-sm md:text-base text-gray-600"> {/* Made font size more responsive */}
+      <p className="text-sm sm:text-base text-gray-700 leading-snug"> {/* Adjusted font size and line height */}
         {text}
       </p>
     </div>
@@ -33,43 +36,40 @@ const StepCircle = ({ num, text }) => (
 
 const HowToGetBloodSection = () => {
   return (
-    <div className="min-h-screen bg-gray-100 p-4 md:p-8 flex flex-col items-center justify-center"> {/* Made padding responsive */}
+    <div className="min-h-screen bg-gray-100 p-4 md:p-8 flex flex-col items-center justify-center">
       {/* Title */}
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-8 md:mb-12 mt-4 md:mt-8 text-center"> {/* Made font size and margin responsive */}
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold  mb-12 md:mb-16 mt-8 text-center">
         خون کیسے حاصل کریں؟
       </h2>
 
-      <div className="relative flex flex-col items-center w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-6xl"> {/* More controlled max-w */}
+      <div className="relative flex flex-col items-center w-full max-w-sm sm:max-w-xl md:max-w-4xl lg:max-w-6xl">
+
         {/* Step 1 */}
-        <div className="mb-8 md:mb-12"> {/* Made margin responsive */}
+        <div className="mb-16 md:mb-20"> {/* Increased bottom margin for spacing */}
           <StepCircle num={1} text="اپنا فارم پُر کریں اور درخواست جمع کروائیں۔" />
         </div>
 
         {/* Horizontal line and container for Steps 2 and 3 */}
-        {/* Changed from 'flex-col md:flex-row' to 'flex-row' for horizontal layout on mobile too */}
-        <div className="relative w-full flex flex-row justify-between items-start px-2 sm:px-4 md:px-8 lg:px-24">
+        <div className="relative w-full flex flex-col md:flex-row justify-around items-center px-2 sm:px-4 md:px-8 lg:px-16">
           {/* Heartbeat line and central heart SVG as a background element */}
+          {/* Note: SVG needs to be positioned carefully to connect circles visually */}
           <svg
-            className="absolute w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" /* Center SVG container */
-            viewBox="0 0 1000 200" /* Standard viewBox */
+            className="absolute w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0"
+            viewBox="0 0 1000 200"
             preserveAspectRatio="none"
-            style={{ overflow: 'visible', zIndex: 0 }}
+            style={{ overflow: 'visible' }}
           >
-            {/* Heartbeat lines (ECG pulse as per image, with large amplitude) */}
+            {/* Heartbeat lines (ECG pulse) */}
             <path
-              // Left line going from the center of Step 2 to the start of the heart, with ECG pulse
-              d="M 150,100
-                 L 200,100 L 210,100 L 220,70 L 230,130 L 240,100 L 250,100 L 260,100 L 270,70 L 280,130 L 290,100 L 300,100 L 310,100 L 320,70 L 330,130 L 340,100 L 350,100
-                 L 360,100 L 370,100 L 380,70 L 390,130 L 400,100 L 410,100 L 420,70 L 430,130 L 440,100 L 450,100 L 460,100 L 470,70 L 480,130 L 490,100 L 500,100"
+              // Left segment, adjusted path coordinates for better flow
+              d="M 150,100 Q 250,70 350,100 T 450,100 T 500,100" // Simplified with Quadratic Bezier for smoother pulse
               fill="none"
               stroke="url(#heartbeatGradient)"
               strokeWidth="4"
             />
             <path
-              // Right line after the heart going to the center of Step 3, with ECG pulse
-              d="M 500,100
-                 L 510,100 L 520,70 L 530,130 L 540,100 L 550,100 L 560,100 L 570,70 L 580,130 L 590,100 L 600,100 L 610,100 L 620,70 L 630,130 L 640,100 L 650,100
-                 L 700,100 L 710,100 L 720,70 L 730,130 L 740,100 L 750,100 L 760,100 L 770,70 L 780,130 L 790,100 L 800,100 L 810,100 L 820,70 L 830,130 L 840,100 L 850,100"
+              // Right segment
+              d="M 500,100 Q 550,70 650,100 T 750,100 T 850,100" // Simplified with Quadratic Bezier
               fill="none"
               stroke="url(#heartbeatGradient)"
               strokeWidth="4"
@@ -81,21 +81,24 @@ const HowToGetBloodSection = () => {
                 <stop offset="100%" style={{ stopColor: '#c026d3', stopOpacity: 1 }} />
               </linearGradient>
             </defs>
-            {/* Central Heart - adjusted position and scale */}
-            <g transform="translate(500, 100) scale(1.0)"> {/* Center in viewBox, set scale to 1.0 (original size) */}
+            {/* Central Heart */}
+            <g transform="translate(500, 100) scale(1.0)">
               <path
-                // Heart shape path, large and precise as per image
                 d="M 0,-30 C 25,-60 60,-60 80,-30 C 100,0 60,30 0,60 C -60,30 -100,0 -80,-30 C -60,-60 -25,-60 0,-30 Z"
-                fill="#831843" // Matches the dark red from the gradient
+                fill="#831843"
               />
             </g>
           </svg>
 
           {/* Step 2 */}
-          <StepCircle num={2} text="اپنی صحت کی جانچ کروائیں تاکہ خون عطیہ کر سکیں۔" />
+          <div className="mb-16 md:mb-0"> {/* Added mb for mobile, removed for larger screens */}
+            <StepCircle num={2} text="اپنی صحت کی جانچ کروائیں تاکہ خون عطیہ کر سکیں۔" />
+          </div>
 
           {/* Step 3 */}
-          <StepCircle num={3} text="خون حاصل کریں" />
+          <div>
+            <StepCircle num={3} text="خون حاصل کریں" />
+          </div>
         </div>
       </div>
     </div>
